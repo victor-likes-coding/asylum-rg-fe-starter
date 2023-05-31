@@ -15,7 +15,7 @@ Deliver the following:
 
 ### Relevant Files
 
-You must inspect the code in `src/components/pages/DataVisualizations`, `src/data`, and `src/state` to ensure that the application is pulling data from an API and not the dummy data file. 
+You must inspect the code in `src/components/pages/DataVisualizations`, `src/data`, and `src/state` to ensure that the application is pulling data from an API and not the dummy data file. Specifically, focus on `GraphWrapper.jsx`.
 
 ### Guidance
 
