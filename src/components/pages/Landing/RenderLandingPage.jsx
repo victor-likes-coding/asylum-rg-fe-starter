@@ -10,6 +10,17 @@ import { useHistory } from 'react-router-dom';
 // for the purposes of testing PageNav
 // import PageNav from '../../common/PageNav';
 
+function GraphLink({ image, text }) {
+  return (
+    <div className="graph-link-container">
+      <div className="image-container">
+        <img src={image} alt="" className="graph-clickable-image" />
+      </div>
+      <p className="graph-link-text">{text}</p>
+    </div>
+  );
+}
+
 function RenderLandingPage(props) {
   const scrollToTop = () => {
     document.body.scrollTop = 0;
@@ -33,6 +44,12 @@ function RenderLandingPage(props) {
 
       {/* Graphs Section: Add code here for the graphs section for your first ticket */}
       {/* <div className="graphs-section"> */}
+      <setion className="graphs-section">
+        <GraphLink
+          image={GrantRatesByOfficeImg}
+          text="Search Grant Rates By Office"
+        />
+      </setion>
       <div className="view-more-data-btn-container">
         <Button
           type="default"
