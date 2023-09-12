@@ -49,6 +49,15 @@ function RenderLandingPage(props) {
           image={GrantRatesByOfficeImg}
           text="Search Grant Rates By Office"
         />
+
+        <GraphLink
+          image={GrantRatesByNationalityImg}
+          text="Search Grant Rates By Nationality"
+        />
+        <GraphLink
+          image={GrantRatesOverTimeImg}
+          text="Search Grant Rates Over Time"
+        />
       </setion>
       <div className="view-more-data-btn-container">
         <Button
