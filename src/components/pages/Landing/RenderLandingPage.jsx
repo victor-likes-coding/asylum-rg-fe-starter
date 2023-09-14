@@ -61,7 +61,6 @@ function RenderLandingPage(props) {
       </div>
 
       {/* Graphs Section: Add code here for the graphs section for your first ticket */}
-      {/* <div className="graphs-section"> */}
       <section className="graphs-section">
         <GraphLink
           containerClassName="grant-rates-by-office-graph-container"
