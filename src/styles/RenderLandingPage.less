@@ -40,11 +40,28 @@
     color: @white;
     font-size: 1.2rem;
 }
-
+    // custom css for ticket #1
 .graphs-section {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+
+    .graph-clickable-image {
+        display: block;
+        width: 300px;
+    }
+
+    .gr-nationality-img.smaller {
+        width: calc(117.33px*1.5);
+        margin-inline: auto;
+    }
+
+    .graph-link-text {
+        font-family: 'acumin';
+        font-size: 1.5rem;
+        color: @main-color;
+        margin-top: 5%;
+    }
 }
 
 .view-more-data-btn-container {
@@ -130,7 +147,6 @@
         width: 85%;
         margin: 0 auto;
     }
-
     .graphs-section {
         display: block;
         width: 100%;
