@@ -10,11 +10,21 @@ import { useHistory } from 'react-router-dom';
 // for the purposes of testing PageNav
 // import PageNav from '../../common/PageNav';
 
-function GraphLink({ image, text }) {
+function GraphLink({
+  image,
+  text,
+  containerClassName = '',
+  imageContainerClassName = '',
+  imageClassName = '',
+}) {
   return (
-    <div className="graph-link-container">
-      <div className="image-container">
-        <img src={image} alt="" className="graph-clickable-image" />
+    <div className={`graph-link-container ${containerClassName}`}>
+      <div className={`image-container ${imageContainerClassName}`}>
+        <img
+          src={image}
+          alt=""
+          className={`graph-clickable-image ${imageClassName}`}
+        />
       </div>
       <p className="graph-link-text">{text}</p>
     </div>
@@ -46,15 +56,19 @@ function RenderLandingPage(props) {
       {/* <div className="graphs-section"> */}
       <section className="graphs-section">
         <GraphLink
+          containerClassName="grant-rates-by-office-graph-container"
           image={GrantRatesByOfficeImg}
           text="Search Grant Rates By Office"
         />
 
         <GraphLink
+          containerClassName="grant-rates-by-nationality-container"
           image={GrantRatesByNationalityImg}
+          imageClassName="gr-nationality-img smaller"
           text="Search Grant Rates By Nationality"
         />
         <GraphLink
+          containerClassName="grant-rates-over-time-container"
           image={GrantRatesOverTimeImg}
           text="Search Grant Rates Over Time"
         />
