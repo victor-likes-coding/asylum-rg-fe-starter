@@ -44,7 +44,7 @@ function RenderLandingPage(props) {
 
       {/* Graphs Section: Add code here for the graphs section for your first ticket */}
       {/* <div className="graphs-section"> */}
-      <setion className="graphs-section">
+      <section className="graphs-section">
         <GraphLink
           image={GrantRatesByOfficeImg}
           text="Search Grant Rates By Office"
@@ -58,7 +58,7 @@ function RenderLandingPage(props) {
           image={GrantRatesOverTimeImg}
           text="Search Grant Rates Over Time"
         />
-      </setion>
+      </section>
       <div className="view-more-data-btn-container">
         <Button
           type="default"
