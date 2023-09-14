@@ -10,9 +10,15 @@ import { useHistory } from 'react-router-dom';
 // for the purposes of testing PageNav
 // import PageNav from '../../common/PageNav';
 
+/**
+ * The GraphLink function is a React component that renders a clickable image with accompanying text.
+ * @returns a JSX element.
+ */
 function GraphLink({
   image,
   text,
+  alt,
+  link,
   containerClassName = '',
   imageContainerClassName = '',
   imageClassName = '',
@@ -20,11 +26,13 @@ function GraphLink({
   return (
     <div className={`graph-link-container ${containerClassName}`}>
       <div className={`image-container ${imageContainerClassName}`}>
-        <img
-          src={image}
-          alt=""
-          className={`graph-clickable-image ${imageClassName}`}
-        />
+        <a href={link}>
+          <img
+            src={image}
+            alt={alt}
+            className={`graph-clickable-image ${imageClassName}`}
+          />
+        </a>
       </div>
       <p className="graph-link-text">{text}</p>
     </div>
