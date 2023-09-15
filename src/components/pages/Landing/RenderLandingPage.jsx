@@ -39,7 +39,7 @@ function GraphLink({
   );
 }
 
-function DataButton({ text, link, containerName, type, style, callback }) {
+function DataButton({ text, containerName, type, style, callback }) {
   return (
     <div className={containerName}>
       <Button type={type} style={style} onClick={callback}>
