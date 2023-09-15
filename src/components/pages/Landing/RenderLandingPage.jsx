@@ -39,6 +39,16 @@ function GraphLink({
   );
 }
 
+function DataButton({ text, link, containerName, type, style, callback }) {
+  return (
+    <div className={containerName}>
+      <Button type={type} style={style} onClick={callback}>
+        {text}
+      </Button>
+    </div>
+  );
+}
+
 function RenderLandingPage(props) {
   const scrollToTop = () => {
     document.body.scrollTop = 0;
