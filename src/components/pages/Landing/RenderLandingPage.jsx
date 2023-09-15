@@ -39,6 +39,13 @@ function GraphLink({
   );
 }
 
+/**
+ * The `DataButton` component is a React component that renders a button with specified text, container
+ * name, type, style, and callback function.
+ * @returns a component with a div element with a className specified by the
+ * containerName prop. Inside the div, there is a Button component with props for type, style, and
+ * onClick (as callback). The text prop is used as the content of the Button component.
+ */
 function DataButton({ text, containerName, type, style, callback }) {
   return (
     <div className={containerName}>
