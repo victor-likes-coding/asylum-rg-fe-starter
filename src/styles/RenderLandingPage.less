@@ -62,12 +62,17 @@
         color: @main-color;
         margin-top: 5%;
     }
+
+.more-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-inline: auto;
 }
 
 .view-more-data-btn-container {
     height: 44px;
-    width: 180px;
-    margin: 0 auto;
+    // margin: 0 auto; // removed: see .more-buttons jcc + margin-inline trick +
     text-align: center;
     margin-bottom: 10%;
 }
