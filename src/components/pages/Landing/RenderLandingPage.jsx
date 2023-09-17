@@ -97,15 +97,21 @@ function RenderLandingPage(props) {
           text="Search Grant Rates Over Time"
         />
       </section>
-      <div className="view-more-data-btn-container">
-        <Button
-          type="default"
+      <section className="more-buttons">
+        <DataButton
+          text="View the Data"
+          containerName="view-more-data-btn-container"
           style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
-          onClick={() => history.push('/graphs')}
-        >
-          View the Data
-        </Button>
-      </div>
+          callback={() => history.push('/graphs')}
+        />
+
+        <DataButton
+          text="Download the Data"
+          containerName="view-more-data-btn-container"
+          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+          callback={() => history.push('/graphs')}
+        />
+      </section>
 
       <div className="middle-section">
         <div className="hrf-img-container">
