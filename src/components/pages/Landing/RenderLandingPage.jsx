@@ -63,6 +63,7 @@ function RenderLandingPage(props) {
   };
 
   const history = useHistory();
+  const primaryButtonStyle = { backgroundColor: '#404C4A', color: '#FFFFFF' };
 
   return (
     <div className="main">
@@ -101,14 +102,14 @@ function RenderLandingPage(props) {
         <DataButton
           text="View the Data"
           containerName="view-more-data-btn-container"
-          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+          style={primaryButtonStyle}
           callback={() => history.push('/graphs')}
         />
 
         <DataButton
           text="Download the Data"
           containerName="view-more-data-btn-container"
-          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+          style={primaryButtonStyle}
           callback={() => history.push('/graphs')}
         />
       </section>
