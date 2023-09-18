@@ -26,6 +26,24 @@ async function getDataWrapper(url, years, office) {
   } catch (error) {
     console.error(error);
   }
+async function getData(url, years, view, office, updateFn) {
+  try {
+    const [fiscalResults, citizenshipResults] = await Promise.all([
+      getDataWrapper(url.endpoints.fiscal, years, office),
+      getDataWrapper(url.endpoints.citizenship, years, office),
+    ]);
+
+    const uploadData = [{
+      ...fiscalResults.data,
+      citizenshipResults: citizenshipResults.data,
+    }];
+
+    updateFn(view, office, uploadData);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 }
 
 function GraphWrapper(props) {
@@ -62,7 +80,7 @@ function GraphWrapper(props) {
         break;
     }
   }
-  function updateStateWithNewData(years, view, office, stateSettingCallback) {
+  async function updateStateWithNewData(years, view, office, stateSettingCallback) {
     /*
           _                                                                             _
         |                                                                                 |
@@ -85,37 +103,12 @@ function GraphWrapper(props) {
     
     */
 
-    if (office === 'all' || !office) {
-      axios
-        .get(process.env.REACT_APP_API_URI, {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-          params: {
-            from: years[0],
-            to: years[1],
-          },
-        })
-        .then(result => {
-          stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    } else {
-      axios
-        .get(process.env.REACT_APP_API_URI, {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-          params: {
-            from: years[0],
-            to: years[1],
-            office: office,
-          },
-        })
-        .then(result => {
-          stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-        })
-        .catch(err => {
-          console.error(err);
-        });
+    // targets all offices
+    try {
+      await getData(url, years, view, office, stateSettingCallback);
+    } catch (error) {
+
+      console.error(error);
     }
   }
   const clearQuery = (view, office) => {
