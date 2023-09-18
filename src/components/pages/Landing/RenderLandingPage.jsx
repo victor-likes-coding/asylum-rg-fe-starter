@@ -139,7 +139,7 @@ function RenderLandingPage(props) {
               <h3>Systeming Disparity Insights</h3>
             </header>
           </div>
-          <div className="row">
+          <div className="row facts">
             <article className="col">
               <div className="fact">36%</div>
               <p className="text">
