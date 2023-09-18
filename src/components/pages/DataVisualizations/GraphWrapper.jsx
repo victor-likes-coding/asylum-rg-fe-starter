@@ -17,6 +17,17 @@ import url from '../../../url.config';
 
 const { background_color } = colors;
 
+async function getDataWrapper(url, years, office) {
+  const options = office
+    ? { params: { from: years[0], to: years[1], office } }
+    : { params: { from: years[0], to: years[1] } };
+  try {
+    return await axios.get(url, options);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 function GraphWrapper(props) {
   const { set_view, dispatch } = props;
   let { office, view } = useParams();
