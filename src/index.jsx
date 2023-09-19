@@ -23,7 +23,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import reducer from './state/reducers';
 import { colors } from './styles/data_vis_colors';
 
-import { Auth0ProviderWithHistory } from './auth/auth0-provider-with-history';
+import { Auth0ProviderWithHistory } from './components/common/auth0-provider-with-history';
 
 const { primary_accent_color } = colors;
 
