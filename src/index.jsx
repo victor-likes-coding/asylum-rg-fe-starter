@@ -24,6 +24,8 @@ import reducer from './state/reducers';
 import { colors } from './styles/data_vis_colors';
 
 import { Auth0ProviderWithHistory } from './components/common/auth0-provider-with-history';
+import { useAuth0 } from '@auth0/auth0-react';
+import LoadingComponent from './components/common/LoadingComponent';
 
 const { primary_accent_color } = colors;
 
@@ -42,6 +44,8 @@ ReactDOM.render(
 );
 
 export function App() {
+  const { isLoading } = useAuth0();
+  if (isLoading) return <LoadingComponent message="Loading..." />;
   const { Footer, Header } = Layout;
   return (
     <Layout>
