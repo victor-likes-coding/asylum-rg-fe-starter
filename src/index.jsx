@@ -27,6 +27,7 @@ import { colors } from './styles/data_vis_colors';
 import { Auth0ProviderWithHistory } from './components/common/auth0-provider-with-history';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoadingComponent from './components/common/LoadingComponent';
+import { Profile } from './components/common/profile';
 
 const { primary_accent_color } = colors;
 
@@ -63,6 +64,7 @@ export function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
+        <Route path="/profile" component={Profile} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer
