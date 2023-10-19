@@ -1,14 +1,60 @@
 import React from 'react';
 // ADD IMPORTS BACK FOR GRAPHS SECTION
-// import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png';
-// import GrantRatesByNationalityImg from '../../../styles/Images/pie-chart-no-text.png';
-// import GrantRatesOverTimeImg from '../../../styles/Images/line-graph-no-text.png';
+import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png';
+import GrantRatesByNationalityImg from '../../../styles/Images/pie-chart-no-text.png';
+import GrantRatesOverTimeImg from '../../../styles/Images/line-graph-no-text.png';
 import HrfPhoto from '../../../styles/Images/paper-stack.jpg';
 import '../../../styles/RenderLandingPage.less';
 import { Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 // for the purposes of testing PageNav
 // import PageNav from '../../common/PageNav';
+
+/**
+ * The GraphLink function is a React component that renders a clickable image with accompanying text.
+ * @returns a JSX element.
+ */
+function GraphLink({
+  image,
+  text,
+  alt,
+  link,
+  containerClassName = '',
+  imageContainerClassName = '',
+  imageClassName = '',
+}) {
+  return (
+    <div className={`graph-link-container ${containerClassName}`}>
+      <div className={`image-container ${imageContainerClassName}`}>
+        <a href={link}>
+          <img
+            src={image}
+            alt={alt}
+            className={`graph-clickable-image ${imageClassName}`}
+          />
+        </a>
+      </div>
+      <p className="graph-link-text">{text}</p>
+    </div>
+  );
+}
+
+/**
+ * The `DataButton` component is a React component that renders a button with specified text, container
+ * name, type, style, and callback function.
+ * @returns a component with a div element with a className specified by the
+ * containerName prop. Inside the div, there is a Button component with props for type, style, and
+ * onClick (as callback). The text prop is used as the content of the Button component.
+ */
+function DataButton({ text, containerName, type, style, callback }) {
+  return (
+    <div className={containerName}>
+      <Button type={type} style={style} onClick={callback}>
+        {text}
+      </Button>
+    </div>
+  );
+}
 
 function RenderLandingPage(props) {
   const scrollToTop = () => {
@@ -17,6 +63,7 @@ function RenderLandingPage(props) {
   };
 
   const history = useHistory();
+  const primaryButtonStyle = { backgroundColor: '#404C4A', color: '#FFFFFF' };
 
   return (
     <div className="main">
@@ -32,16 +79,40 @@ function RenderLandingPage(props) {
       </div>
 
       {/* Graphs Section: Add code here for the graphs section for your first ticket */}
-      {/* <div className="graphs-section"> */}
-      <div className="view-more-data-btn-container">
-        <Button
-          type="default"
-          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
-          onClick={() => history.push('/graphs')}
-        >
-          View the Data
-        </Button>
-      </div>
+      <section className="graphs-section">
+        <GraphLink
+          containerClassName="grant-rates-by-office-graph-container"
+          image={GrantRatesByOfficeImg}
+          text="Search Grant Rates By Office"
+        />
+
+        <GraphLink
+          containerClassName="grant-rates-by-nationality-container"
+          image={GrantRatesByNationalityImg}
+          imageClassName="gr-nationality-img smaller"
+          text="Search Grant Rates By Nationality"
+        />
+        <GraphLink
+          containerClassName="grant-rates-over-time-container"
+          image={GrantRatesOverTimeImg}
+          text="Search Grant Rates Over Time"
+        />
+      </section>
+      <section className="more-buttons">
+        <DataButton
+          text="View the Data"
+          containerName="view-more-data-btn-container"
+          style={primaryButtonStyle}
+          callback={() => history.push('/graphs')}
+        />
+
+        <DataButton
+          text="Download the Data"
+          containerName="view-more-data-btn-container"
+          style={primaryButtonStyle}
+          callback={() => history.push('/graphs')}
+        />
+      </section>
 
       <div className="middle-section">
         <div className="hrf-img-container">
@@ -62,6 +133,41 @@ function RenderLandingPage(props) {
       <div>
         {/* Bottom Section: Add code here for the graphs section for your first ticket */}
         {/* <div className="bottom-section">*/}
+        <section className="bottom-section">
+          <div className="row header">
+            <header>
+              <h3>Systeming Disparity Insights</h3>
+            </header>
+          </div>
+          <div className="row facts">
+            <article className="col">
+              <div className="fact">36%</div>
+              <p className="text">
+                By the end of the Trump administration, the average asylum
+                office grant rate had fallen 36 percent from an average of 44
+                percent in fiscal year 2016 to 28% in fiscal year 2020.
+              </p>
+            </article>
+            <article className="col">
+              <div className="fact">5%</div>
+              <p className="text">
+                The New York asylum office grant rate dropped to 5 percent in
+                fiscal year 2020.
+              </p>
+            </article>
+            <article className="col">
+              <div className="fact">6x Lower</div>
+              <p className="text">
+                Between fiscal year 2017 and 2020, the New York asylum office's
+                average grant rate was six times lower than the San Francisco
+                asylum office.
+              </p>
+            </article>
+          </div>
+          <div className="row buttons">
+            <DataButton text="Read More" style={primaryButtonStyle} />
+          </div>
+        </section>
         <p onClick={() => scrollToTop()} className="back-to-top">
           Back To Top ^
         </p>
